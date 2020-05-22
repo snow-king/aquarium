@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 * в противном случае – не рождаются вовсе.
 */
 
+
 // Класс наследуется от Pane, и имеет интерфейс поведения IBehavior
 public abstract class Fish extends Pane implements IBehaviour{
     String typeFish;
