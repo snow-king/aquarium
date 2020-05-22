@@ -1,12 +1,8 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import sample.Classes.Windows.WindowError;
@@ -86,6 +82,10 @@ public class Controller {
         }
     }
 
+    /**
+     *  метод обработки кнопок
+     * @param appManager экзземпляр приложения
+     */
     private void initListeners(AppManager appManager){
         startButton.setOnAction(event ->
         {
@@ -118,26 +118,17 @@ public class Controller {
             }
         });
 
-        showInformationButton.setOnAction(event -> {
-            appManager.showWindowCollectionsInformatos();
-        });
+        showInformationButton.setOnAction(event -> appManager.showWindowCollectionsInformatos());
 
-        mainStage.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            @Override
-            public void handle(KeyEvent event) {
-                try {
-                    writeKeyCode(event.getCode(),appManager);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        mainStage.setOnKeyPressed(event -> {
+            try {
+                writeKeyCode(event.getCode(),appManager);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
 
-        checkBoxShowTime.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue ov, Boolean old_val, Boolean new_val) {
-                showTimer();
-            }
-        });
+        checkBoxShowTime.selectedProperty().addListener((ov, old_val, new_val) -> showTimer());
 
     }
 
@@ -175,6 +166,10 @@ public class Controller {
         }
     }
 
+    /**
+     *  генерация окна ошибки
+     * @param textField - ТЕКСТОВОЕ ПОЛЕ
+     */
     private void showDialogError(TextField textField) {
         String erroeMessage;
         if(textField.getId().equals(timeBornGuppyFish.getId())){
@@ -195,7 +190,12 @@ public class Controller {
         }
     }
 
-    private void writeKeyCode(KeyCode key, AppManager appManager) throws Exception {
+    /**
+     *  делаем
+     * @param key- клавиша
+     * @param appManager экземпляр приложения
+     */
+    private void writeKeyCode(KeyCode key, AppManager appManager) {
 
         if(key == KeyCode.T) {
             showTimer();
@@ -216,6 +216,9 @@ public class Controller {
         }
     }
 
+    /**
+     * метод таймера
+     */
     private void showTimer(){
         if(!showLog)
         {
