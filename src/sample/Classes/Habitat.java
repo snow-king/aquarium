@@ -72,12 +72,23 @@ public class Habitat {
         return new GuppyFish(imageView,x,y,time, timeLifeGuppyFish);
     }
 
-    //    Золотые рыбкирождаются каждые N2 секунд, при условии, что их количество менее K % от общего числа кроликов,
-    //    в противном случае – не рождаются вовсе.
+    /**
+     * Золотые рыбкирождаются каждые N2 секунд, при условии, что их количество менее K % от общего числа рыбок,
+     *  в противном случае – не рождаются вовсе.
+     * @param N2- время рождения
+     * @param K2 - общее колличество
+     * @param time- время
+     * @return рождается или нет
+     */
     private boolean canBornGoldFish(int N2, int K2, int time){
         return time % N2 == 0 && Fish.countsAllFish <= Fish.countsAllFish * K2;
     }
 
+    /**
+     *
+     * @param time -время
+     * @return Рождаем рыбку
+     */
     private GoldFish makeGoldFish(int time){
         ImageView imageView = new ImageView(imageGoldFish);
         int x = (int)Math.floor(Math.random()*(WIDTH- Fish.WIDTH));
@@ -97,11 +108,11 @@ public class Habitat {
         this.P1 = P1;
         this.N2 = N2;
         this.K2 = K2;
-    };
+    }
     public void setConditionsTimeLifeFish(int timeLifeGoldFish, int timeLifeGuppyFish){
         this.timeLifeGoldFish = timeLifeGoldFish;
         this.timeLifeGuppyFish = timeLifeGuppyFish;
-    };
+    }
 
     public ImageView getImageViewBackground() {
         ImageView imageViewBackground = new ImageView(imageBackground);

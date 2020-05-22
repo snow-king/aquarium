@@ -5,15 +5,18 @@ import sample.Classes.Fish.Fish;
 
 import java.util.*;
 
+/**
+ * класс коллекций
+ */
 class Collections {
     private ArrayList<Fish> arrayList;            //Коллекция для хранения объектов
     private TreeSet<Integer> treeSet;               //Коллекция для хранения и поиска уникальных идентификаторов
     private HashMap<Integer,Integer> hashMap;       //Коллекция для хранения времени рождения объектов
 
     Collections(){
-        arrayList = new ArrayList<Fish>();
-        treeSet = new TreeSet<Integer>();
-        hashMap = new HashMap<Integer,Integer>();
+        arrayList = new ArrayList<>();
+        treeSet = new TreeSet<>();
+        hashMap = new HashMap<>();
     }
 
     void add(Fish fish){
@@ -28,6 +31,10 @@ class Collections {
         hashMap.remove(fish.getIdentifier(), fish.getTimeBorn());
     }
 
+    /**
+     *
+     * @param pane - панель где выводяться рыбки
+     */
     void  updateCollectionsPerTime(Pane pane){
         for (Fish fishUpdate : arrayList) {
             fishUpdate.updaTimeLiveFish();
@@ -40,27 +47,33 @@ class Collections {
          *       Каждый итератор завернут в функцию
          * */
 
-        while(checkIsAmyRabbitDead()){
-            Fish deleFish = findDeadRabbit();
+        while(checkIsAnyFishDead()){
+            Fish deleFish = findDeadFish();
             delete(deleFish);
+            assert deleFish != null;
             pane.getChildren().remove(deleFish.getImageView());
         }
 
     }
 
-    private boolean checkIsAmyRabbitDead(){
-        Iterator<Fish> iteratorDelete = arrayList.listIterator();
-        while (iteratorDelete.hasNext()) {
-            Fish element = iteratorDelete.next();
-            if (element.isDead())
-            {
+    /**
+     *
+     * @return проверка есть ли мёртвая рыба
+     */
+    private boolean checkIsAnyFishDead(){
+        for (Fish element : arrayList) {
+            if (element.isDead()) {
                 return true;
             }
         }
         return  false;
     }
 
-    private Fish findDeadRabbit(){
+    /**
+     *
+     * @return ищем мёртвую рыбу
+     */
+    private Fish findDeadFish(){
         for (Fish element : arrayList) {
             if (element.isDead()) {
                 return element;
@@ -75,6 +88,10 @@ class Collections {
         hashMap.clear();
     }
 
+    /**
+     *
+     * @return Получаем живых рыб
+     */
     String getAliveFish(){
         StringBuilder resultString = new StringBuilder();
         Iterator<Fish> iteratorDelete = arrayList.listIterator();

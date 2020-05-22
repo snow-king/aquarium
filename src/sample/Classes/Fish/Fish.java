@@ -14,7 +14,9 @@ import javafx.scene.image.ImageView;
 */
 
 
-// Класс наследуется от Pane, и имеет интерфейс поведения IBehavior
+/**
+ * Класс наследуется от Pane, и имеет интерфейс поведения IBehavior
+ */
 public abstract class Fish extends Pane implements IBehaviour{
     String typeFish;
 
@@ -23,8 +25,8 @@ public abstract class Fish extends Pane implements IBehaviour{
     public static final int HEIGHT = 50;
     static public int countsAllFish = 0;
     private int identifier = 0;
-    private int timeBorn = 0;
-    int timeLife = 0;
+    private int timeBorn;
+    int timeLife;
     boolean isDead = false;
 
     Fish(ImageView imageView, int timeBorn, int timeLife){
