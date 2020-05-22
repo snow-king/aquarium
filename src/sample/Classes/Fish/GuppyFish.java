@@ -2,13 +2,22 @@ package sample.Classes.Fish;
 
 import javafx.scene.image.ImageView;
 
-
-// Обыкновенные кролики рождаются каждые N1 секунд с вероятностью P1.
+/**
+ *  GuppyFish рождаются каждые N1 секунд с вероятностью P1.
+ */
 
 public class GuppyFish extends Fish {
 
     public static int countGuppyFish = 0;
 
+    /**
+     *
+     * @param imageView бэкграудн
+     * @param x позиция по x
+     * @param y позиция по y
+     * @param timeBorn время рождения
+     * @param timeLife время смерти
+     */
     public GuppyFish(ImageView imageView, int x, int y, int timeBorn, int timeLife){
         super(imageView,timeBorn,timeLife);
         setPosition(x,y);

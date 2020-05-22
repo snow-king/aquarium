@@ -39,6 +39,9 @@ public abstract class Fish extends Pane implements IBehaviour{
         countsAllFish++;
     }
 
+    /**
+     * генерируем индеификатор
+     */
     private void generateIdentifer(){
         identifier = (int)Math.floor(Math.random()*10000);
     }
