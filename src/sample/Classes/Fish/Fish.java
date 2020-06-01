@@ -47,7 +47,7 @@ public abstract class Fish extends Pane implements IBehaviour{
     }
 
     @Override
-    public void move(int x, int y) {
+    public abstract void move(int x, int y) {
 
     }
 
@@ -77,7 +77,7 @@ public abstract class Fish extends Pane implements IBehaviour{
     }
 
     @Override
-    public void updaTimeLiveFish(){
+    public abstract void updaTimeLiveFish(){
     }
 
     public ImageView getImageView(){
